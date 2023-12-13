@@ -6,6 +6,7 @@ const SearchBar = ({setResults}) => {
   const [input, setInput] = useState('')
   const [allEmojis, setAllEmojis] = useState('[]')
   const [isSearchVisible, setIsSearchVisible] = useState(false) 
+  
   useEffect(()=> {
     fetch('https://gist.githubusercontent.com/VPetar/e1cd462371d438ff863e09983072007b/raw/52087f314f4f763ae0a81fcb9f340bf0a1f2a41a/json')
       .then((response) => response.json())
