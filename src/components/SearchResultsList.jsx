@@ -1,7 +1,7 @@
 import React from 'react'
 import copy from 'copy-to-clipboard'
 import { useState, useEffect } from 'react'
-import '/Users/aleksa/Desktop/emoji-search-app/emoji-search-app/src/styles/style.css'
+import '/Users/aleksa/Desktop/emoji-search/emoji-search/src/styles/style.css'
 const SearchResultsList = ({results}) => {
   const [copied, setCopied] = useState('')
   const [showPopup, setShowPopup] = useState(false)

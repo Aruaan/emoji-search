@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import {FaSearch} from 'react-icons/fa'
 import {useState} from 'react'
-import '/Users/aleksa/Desktop/emoji-search-app/emoji-search-app/src/styles/style.css'
+import '/Users/aleksa/Desktop/emoji-search/emoji-search/src/styles/style.css'
 const SearchBar = ({setResults}) => {
   const [input, setInput] = useState('')
   const [allEmojis, setAllEmojis] = useState('[]')
