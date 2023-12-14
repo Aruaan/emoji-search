@@ -2,10 +2,14 @@ import React, { useEffect } from 'react'
 import {FaSearch} from 'react-icons/fa'
 import {useState} from 'react'
 import '../styles/style.css'
+
+// A component used to search for emojis.
 const SearchBar = ({setResults}) => {
+  // State for the input field and the emojis.
   const [input, setInput] = useState('')
   const [allEmojis, setAllEmojis] = useState('[]')
 
+  //Fetches the emojis from the gist once the component mounts.
   useEffect(()=> {
     fetch('https://gist.githubusercontent.com/VPetar/e1cd462371d438ff863e09983072007b/raw/52087f314f4f763ae0a81fcb9f340bf0a1f2a41a/json')
       .then((response) => response.json())
@@ -15,6 +19,7 @@ const SearchBar = ({setResults}) => {
       .catch(error => console.error('Error fetching data:', error))
   }, [])
   
+  //Filters the emojis based on the input value.
   const filterEmojis = (value) => {
     const searchTerms = value.toLowerCase().split(' ')
     const results = allEmojis.filter(emoji =>
@@ -24,7 +29,7 @@ const SearchBar = ({setResults}) => {
       )
     setResults(results)
   }
-
+  //Handles the input change.
   const handleChange = (value) => {
     setInput(value)
     if(value.trim() === ''){
@@ -35,11 +40,7 @@ const SearchBar = ({setResults}) => {
 
   return (
     <div className='input-container'>
-      <button 
-        type='submit' 
-        className='search-button'>
-        <FaSearch/>
-      </button>
+      <FaSearch className='search-icon'/> 
       <input
         className='search-input'
         placeholder='Search for emojis...'

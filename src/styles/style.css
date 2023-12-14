@@ -3,6 +3,7 @@
 *{
   box-sizing: border-box;
 }
+/* Body styling - full viewport height, centered content, background color */
 body {
   margin: 0;
   padding: 0;
@@ -13,7 +14,7 @@ body {
   background-color: #6E8387;
   font-family: 'Roboto', sans-serif;
 }
-
+/* Main container for centering the app */
 .container {
   display: flex;
   flex-direction: column;
@@ -23,32 +24,37 @@ body {
   margin: 8px auto;
   padding-top: 0; 
 }
-
+/* Container for the search input and icon */
 .input-container{
   width: fit-content;
   height: fit-content;
   position: relative;
   margin: 0 auto;
 }
-
+/* Styling for the search input and icon */
 .search-input {
-  width: 50px;
+  width: 80vw;
   height: 100%;
   margin: 0 auto;
   border:none;
+  max-width: 500px;
+  border-radius: 0;
+  border-bottom: 1px solid rgba(255,255,255,.5);
   padding: 10px;
   font-size: 18px;
   letter-spacing: 2px;
   margin-bottom: 5px;
   outline: none;
-  border-radius: 25px;
   background-color: transparent;
   padding-right: 40px;
   color: #fcfafa;
-  transition-duration: 2s;
-  -moz-transition-duration: 1s;
-  -webkit-transition-duration: 1s;
-  -o-transition-duration: 1s;
+}
+
+.search-icon {
+  position:absolute;
+  top: 15px;
+  right:0;
+  color:#fcfafa
 }
 
 .search-input::placeholder {
@@ -58,39 +64,24 @@ body {
   font-weight: 100;
 }
 
-.search-button {
-  width: 50px;
-  height: 54px;
-  border-style: none;
-  font-size: 20px;
-  font-weight: bold;
-  outline: none;
-  cursor: pointer;
-  border-radius: 50%;
-  position:absolute;
-  right: 0px;
-  color: #fcfafa;
-  background-color: transparent;
-  pointer-events: painted;
-}
-.search-button:focus ~ .search-input{
-  width: 80vw;
-  max-width: 500px;
-  border-radius: 0px;
-  background-color: transparent;
-  border-bottom:1px solid rgba(255,255,255,.5);
+/* Media queries for different screen sizes */
+@media screen and (orientation: portrait){
+  .emoji-list {
+    max-height: 80vh;
+  }
 }
 
-.search-input:focus{
-  width: 80vw;
-  max-width: 500px;
-  border-radius: 0px;
-  background-color: transparent;
-  border-bottom:1px solid rgba(255,255,255,.5);
+@media (min-height:1000px){
+  .emoji-list {height: 80vh;}
+  .emoji-text {font-size: 100px;}
 }
+
+/* Styling for the emoji list and the individual emojis */
 
 .emoji-list {
   position: relative;
+  display: flex;
+  flex-direction: column;
   max-width: 500px;
   border: 1px solid #c8d3d5; 
   border-radius: 8px; 
@@ -101,16 +92,16 @@ body {
   max-height: 100vh; 
   margin: 0 auto;
 }
-
 .emoji-list .emoji {
   border-bottom: 1px solid #a4b8c4;
 }
 .emoji-list .emoji:last-child {
-  border-bottom:none;
+  border-bottom: none;
 }
 
 .emoji {
   display: flex;
+  flex-grow:1;
   align-items: center;
   padding: 10px;
   border-bottom: 1px solid #a4b8c4;
@@ -133,32 +124,33 @@ body {
 .emoji-text {
   font-size: 16px; 
 }
-
+/* Styling for the clipboard popup */
 .clipboard-popup {
-  position: fixed; 
-  top: 85%;
-  left: 50%;
-  transform: translateX(-50%);
+  position: relative; 
+  top: 100%;
+  width: 100%;
   padding: 10px 20px;
   background-color: #a4b8c4;
   color: white;
   border-radius: 5px;
+  text-align: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  z-index: 100;
+  
 }
 
 .clipboard-popup.show {
   animation: fadeOut 2s forwards;
 }
-
+/* Defining the animation for the clipboard popup */
 @keyframes fadeOut {
   from { opacity: 1; }
   to { opacity: 0; }
 }
-
+/*Styling for when the list has more than 10 emojis or none at all */
 .more-than-10 {
   border-bottom:none;
   padding: 10px;
+  flex-grow:1;
 }
 
 .no-results {
@@ -169,7 +161,6 @@ body {
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); 
   background-color: #c8d3d5; 
   width: 80vw;
-  overflow-y: scroll;
   max-height: 100vh; 
   margin-top: 16px;
   padding: 8px;
