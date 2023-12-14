@@ -64,18 +64,16 @@ body {
   font-weight: 100;
 }
 
-/* Media queries for different screen sizes */
-@media screen and (orientation: portrait){
-  .emoji-list {
-    max-height: 80vh;
+@media( min-height:1000px ) {
+  .search-input::placeholder {
+    font-size: 24px;
   }
+  .emoji-list{
+    height: 75vh;
+  }
+  
+  
 }
-
-@media (min-height:1000px){
-  .emoji-list {height: 80vh;}
-  .emoji-text {font-size: 100px;}
-}
-
 /* Styling for the emoji list and the individual emojis */
 
 .emoji-list {
@@ -89,7 +87,7 @@ body {
   background-color: #c8d3d5; 
   width: 80vw;
   overflow-y: auto;
-  max-height: 100vh; 
+  max-height: 80vh; 
   margin: 0 auto;
 }
 .emoji-list .emoji {
@@ -126,16 +124,17 @@ body {
 }
 /* Styling for the clipboard popup */
 .clipboard-popup {
-  position: relative; 
-  top: 100%;
+  position: absolute; 
+  top: 0;
   width: 100%;
   padding: 10px 20px;
   background-color: #a4b8c4;
   color: white;
   border-radius: 5px;
+  font-size: 1.2em;
   text-align: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  
+  z-index: 100;
 }
 
 .clipboard-popup.show {
@@ -150,7 +149,8 @@ body {
 .more-than-10 {
   border-bottom:none;
   padding: 10px;
-  flex-grow:1;
+  flex-grow: 1;
+  text-align: center;
 }
 
 .no-results {
